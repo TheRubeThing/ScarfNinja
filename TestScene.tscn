@@ -1,0 +1,142 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Scripts/GUIController.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/New Piskel.png" type="Texture" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Wall" type="Sprite" parent="."]
+modulate = Color( 0.32549, 0.32549, 0.32549, 1 )
+position = Vector2( 242.417, 108.386 )
+scale = Vector2( 7.76038, 1 )
+texture = ExtResource( 3 )
+
+[node name="Wall2" type="Sprite" parent="."]
+modulate = Color( 0.32549, 0.32549, 0.32549, 1 )
+position = Vector2( 243.226, 140.743 )
+scale = Vector2( 7.76038, 1 )
+texture = ExtResource( 3 )
+
+[node name="Wall3" type="Sprite" parent="."]
+modulate = Color( 0.32549, 0.32549, 0.32549, 1 )
+position = Vector2( 226.238, 124.333 )
+rotation = 1.5708
+scale = Vector2( 7.76038, 1 )
+texture = ExtResource( 3 )
+
+[node name="Wall4" type="Sprite" parent="."]
+modulate = Color( 0.32549, 0.32549, 0.32549, 1 )
+position = Vector2( 258.942, 121.676 )
+rotation = 1.5708
+scale = Vector2( 7.76038, 1 )
+texture = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 242.51, 124.616 )
+script = ExtResource( 2 )
+
+[node name="StretchXSlider" type="VSlider" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 27.9223
+margin_top = 133.711
+margin_right = 43.9223
+margin_bottom = 263.711
+max_value = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="StretchXSlider"]
+anchor_left = -1.26835
+anchor_top = -0.141914
+anchor_right = -1.26835
+anchor_bottom = -0.141914
+margin_right = 57.0
+margin_bottom = 14.0
+text = "Stretch X"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="StretchYSlider" type="VSlider" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 92.0401
+margin_top = 134.228
+margin_right = 108.04
+margin_bottom = 264.228
+max_value = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="StretchYSlider"]
+anchor_left = -1.26835
+anchor_top = -0.141914
+anchor_right = -1.26835
+anchor_bottom = -0.141914
+margin_right = 57.0
+margin_bottom = 14.0
+text = "Stretch Y
+"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SquashXSlider" type="VSlider" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 362.99
+margin_top = 134.228
+margin_right = 378.99
+margin_bottom = 264.228
+min_value = -5.0
+max_value = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SquashXSlider"]
+anchor_left = -1.26835
+anchor_top = -0.141914
+anchor_right = -1.26835
+anchor_bottom = -0.141914
+margin_right = 57.0
+margin_bottom = 14.0
+text = "Squash X
+"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SquashYSlider" type="VSlider" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 432.796
+margin_top = 134.228
+margin_right = 448.796
+margin_bottom = 264.228
+min_value = -5.0
+max_value = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SquashYSlider"]
+anchor_left = -1.26835
+anchor_top = -0.141914
+anchor_right = -1.26835
+anchor_bottom = -0.141914
+margin_right = 57.0
+margin_bottom = 14.0
+text = "Squash Y
+"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+[connection signal="value_changed" from="StretchXSlider" to="Player" method="_on_StretchXSlider_value_changed"]
+[connection signal="value_changed" from="StretchYSlider" to="Player" method="_on_StretchYSlider_value_changed"]
+[connection signal="value_changed" from="SquashXSlider" to="Player" method="_on_SquashXSlider_value_changed"]
+[connection signal="value_changed" from="SquashYSlider" to="Player" method="_on_SquashYSlider_value_changed"]
