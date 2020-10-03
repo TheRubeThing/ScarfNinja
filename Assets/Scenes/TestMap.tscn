@@ -41,10 +41,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -71.6504 )
-move_speed = 100.0
-gravity = 100.0
-air_drag = 0.1
-grounded_drag = 0.9
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true

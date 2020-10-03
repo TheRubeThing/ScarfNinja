@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export(float) var move_speed = 100
-export(float) var jump_soeed = 500
+export(float) var jump_speed = 200
 export(float) var gravity = 100
 export(float) var air_drag = 0.1
 export(float) var grounded_drag = 0.9
@@ -21,6 +21,9 @@ func _process(delta):
 			_velocity.x -= _velocity.x * grounded_drag
 		else:
 			_velocity.x -= _velocity.x * air_drag
+			
+	if Input.is_action_just_pressed("Jump") && _grounded:
+		_velocity.y = -jump_speed
 
 	#Animation control
 	if _grounded:
@@ -32,15 +35,26 @@ func _process(delta):
 			$AnimatedSprite.flip_h = true
 		else:
 			$AnimatedSprite.play("Idle")
+	else:
+		if _velocity.y < -60:
+			$AnimatedSprite.play("Jump")
+		else:
+			$AnimatedSprite.play("Fall")
+			if _velocity.x > 0.1:
+				$AnimatedSprite.flip_h = false
+			else:
+				$AnimatedSprite.flip_h = true
 
 func _physics_process(delta):
-	_grounded = test_move(transform, _velocity * delta + Vector2(0,0.1))
+	#Ground test
+	_grounded = test_move(transform, Vector2(0, 1) * delta)
 	print(_grounded)
+	
 	# Gravity
 	if _grounded:
 		_velocity.y = 0
 	else:
 		_velocity.y += gravity * delta
-	
+		
 	# Move
 	move_and_slide(_velocity)
