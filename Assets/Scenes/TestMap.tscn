@@ -54,13 +54,14 @@ shadow_enabled = true
 
 [node name="BG" type="Sprite" parent="."]
 modulate = Color( 0.247059, 0.164706, 0.164706, 1 )
-position = Vector2( 322.839, 133.241 )
+position = Vector2( 152, 200 )
 scale = Vector2( 99.365, 72.8013 )
 z_index = -1
 texture = ExtResource( 3 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2( 27.2707, -25.0596 )
+mass = 100.0
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
 texture = ExtResource( 3 )
@@ -79,4 +80,4 @@ tile_data = PoolIntArray( -1376227, 0, 0, -1376226, 0, 0, -1376225, 0, 0, -13762
 
 [node name="Flag" parent="." instance=ExtResource( 4 )]
 position = Vector2( 512, -344 )
-frame = 3
+frame = 1

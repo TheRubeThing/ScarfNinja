@@ -9,6 +9,7 @@ export(float) var grounded_drag = 0.9
 var _grounded = false
 var _landed = false
 var _velocity = Vector2()
+var _attacking = false
 
 func _process(delta):
 	# Input processing
@@ -23,9 +24,18 @@ func _process(delta):
 		else:
 			_velocity.x -= _velocity.x * air_drag
 
+	if Input.is_action_just_pressed("Attack"):
+			_attacking = true
+
 	#Animation control
 	if _grounded:
-		if _landed:
+				
+		if _attacking:
+			$AnimatedSprite.play("Attack")
+			_velocity.x = 0
+			if $AnimatedSprite.frame == 3:
+				_attacking = false
+		elif _landed:
 			if abs(_velocity.x) > 20:
 				$AnimatedSprite.play("IdleRunTrans")
 				_landed = false
@@ -51,7 +61,11 @@ func _process(delta):
 			else:
 				$AnimatedSprite.play("Idle")
 	else:
-		if _velocity.y < -60:
+		if _attacking:
+			$AnimatedSprite.play("Attack")
+			if $AnimatedSprite.frame == 3:
+				_attacking = false
+		elif _velocity.y < -60:
 			$AnimatedSprite.play("Jump")
 		else:
 			$AnimatedSprite.play("Fall")
