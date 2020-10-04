@@ -41,6 +41,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -71.6504 )
+air_drag = 0.05
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -77,4 +78,4 @@ tile_data = PoolIntArray( -1376227, 0, 0, -1376226, 0, 0, -1376225, 0, 0, -13762
 
 [node name="Flag" parent="." instance=ExtResource( 4 )]
 position = Vector2( 512, -344 )
-frame = 0
+frame = 1

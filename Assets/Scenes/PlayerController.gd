@@ -7,6 +7,7 @@ export(float) var air_drag = 0.1
 export(float) var grounded_drag = 0.9
 
 var _grounded = false
+var _landed = false
 var _velocity = Vector2()
 
 func _process(delta):
@@ -24,14 +25,31 @@ func _process(delta):
 
 	#Animation control
 	if _grounded:
-		if _velocity.x > 0.1:
-			$AnimatedSprite.play("Run")
+		if _landed:
+			if abs(_velocity.x) > 0.1:
+				$AnimatedSprite.play("IdleRunTrans")
+				_landed = false
+			else:
+				$AnimatedSprite.play("Land")
+				if $AnimatedSprite.frame == 2:
+					_landed = false
+		elif _velocity.x > 0.1:
+			if Input.is_action_just_pressed("Right_direction"):
+				$AnimatedSprite.play("IdleRunTrans")
+			else:
+				$AnimatedSprite.play("Run")
 			$AnimatedSprite.flip_h = false
 		elif _velocity.x < -0.1:
-			$AnimatedSprite.play("Run")
+			if Input.is_action_just_pressed("Left_direction"):
+				$AnimatedSprite.play("IdleRunTrans")
+			else:
+				$AnimatedSprite.play("Run")
 			$AnimatedSprite.flip_h = true
 		else:
-			$AnimatedSprite.play("Idle")
+			if Input.is_action_just_released("Left_direction") || Input.is_action_just_released("Right_direction"):
+				$AnimatedSprite.play("IdleRunTrans")
+			else:
+				$AnimatedSprite.play("Idle")
 	else:
 		if _velocity.y < -60:
 			$AnimatedSprite.play("Jump")
@@ -45,7 +63,8 @@ func _process(delta):
 func _physics_process(delta):
 	#Ground test
 	_grounded = test_move(transform, Vector2(0, 1))
-	print(_grounded)
+	if _velocity.y > 0 && _grounded:
+		_landed = true
 	
 	# Gravity
 	if _grounded:
