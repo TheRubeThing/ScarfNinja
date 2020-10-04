@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 export(float) var move_speed = 100
-export(float) var jump_speed = 200
-export(float) var gravity = 250
+export(float) var jump_height = 200
+export(float) var jump_distance = 200
 export(float) var air_drag = 0.1
 export(float) var grounded_drag = 0.9
 
@@ -10,6 +10,9 @@ var _grounded = false
 var _landed = false
 var _velocity = Vector2()
 var _attacking = false
+
+var _gravity = 0
+var _jump_speed = 0
 
 func _process(delta):
 	# Input processing
@@ -75,6 +78,8 @@ func _process(delta):
 				$AnimatedSprite.flip_h = true
 
 func _physics_process(delta):
+	_calculate_jump_parameters()
+
 	#Ground test
 	_grounded = test_move(transform, Vector2(0, 1))
 	if _velocity.y > 0 && _grounded:
@@ -84,14 +89,18 @@ func _physics_process(delta):
 	if _grounded:
 		_velocity.y = 0
 	else:
-		_velocity.y += gravity * delta
+		_velocity.y += _gravity * delta
 
 	# Jumping logic
 	if Input.is_action_just_pressed("Jump") && _grounded:
-		_velocity.y = -jump_speed
+		_velocity.y = -_jump_speed
 
 	if _velocity.y < 0 && Input.is_action_pressed("Jump") == false:
 		_velocity.y -= _velocity.y * air_drag
 		
 	# Move
 	move_and_slide(_velocity)
+
+func _calculate_jump_parameters():
+	_gravity = jump_height / (2 * pow((jump_distance / move_speed), 2))
+	_jump_speed = sqrt(2 * jump_height * _gravity)
