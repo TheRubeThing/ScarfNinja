@@ -26,7 +26,7 @@ func _process(delta):
 	#Animation control
 	if _grounded:
 		if _landed:
-			if abs(_velocity.x) > 0.1:
+			if abs(_velocity.x) > 20:
 				$AnimatedSprite.play("IdleRunTrans")
 				_landed = false
 			else:
@@ -34,13 +34,13 @@ func _process(delta):
 				if $AnimatedSprite.frame == 2:
 					_landed = false
 		elif _velocity.x > 0.1:
-			if Input.is_action_just_pressed("Right_direction"):
+			if Input.is_action_just_pressed("Right_direction") || ($AnimatedSprite.animation == "IdleRunTrans" && $AnimatedSprite.frame != 1):
 				$AnimatedSprite.play("IdleRunTrans")
 			else:
 				$AnimatedSprite.play("Run")
 			$AnimatedSprite.flip_h = false
 		elif _velocity.x < -0.1:
-			if Input.is_action_just_pressed("Left_direction"):
+			if Input.is_action_just_pressed("Left_direction") || ($AnimatedSprite.animation == "IdleRunTrans" && $AnimatedSprite.frame != 1):
 				$AnimatedSprite.play("IdleRunTrans")
 			else:
 				$AnimatedSprite.play("Run")
