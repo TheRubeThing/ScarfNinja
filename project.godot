@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="SquashStretch"
+config/name="ScarfNinja"
 run/main_scene="res://Assets/Scenes/TestMap.tscn"
 config/icon="res://icon.png"
 

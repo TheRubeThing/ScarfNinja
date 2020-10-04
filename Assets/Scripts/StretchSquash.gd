@@ -2,7 +2,7 @@ extends Sprite
 
 func set_stretch(stretch : Vector2):
 	stretch += Vector2(1,1)
-	var stretch_factor = stretch.x / stretch.y
+	var stretch_factor = abs(stretch.x) / abs(stretch.y)
 	self.scale = Vector2(stretch_factor, 1 / stretch_factor)
 
 func set_squash(squash : Vector2):
