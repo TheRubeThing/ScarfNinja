@@ -80,26 +80,27 @@ func _process(delta):
 func _physics_process(delta):
 	_calculate_jump_parameters()
 
-	#Ground test
-	_grounded = test_move(transform, Vector2(0, 1))
-	if _velocity.y > 0 && _grounded:
-		_landed = true
 	
 	# Gravity
 	if _grounded:
 		_velocity.y = 0
 	else:
 		_velocity.y += _gravity * delta
-
+		
 	# Jumping logic
 	if Input.is_action_just_pressed("Jump") && _grounded:
 		_velocity.y = -_jump_speed
-
+			
 	if _velocity.y < 0 && Input.is_action_pressed("Jump") == false:
-		_velocity.y -= _velocity.y * air_drag
-		
+		_velocity.y -= _velocity.y * air_drag * 2
+				
 	# Move
 	move_and_slide(_velocity)
+				
+	#Ground test
+	_grounded = test_move(transform, Vector2(0, 0.1))
+	if _velocity.y > 0 && _grounded:
+		_landed = true
 
 func _calculate_jump_parameters():
 	_gravity = jump_height / (2 * pow((jump_distance / move_speed), 2))

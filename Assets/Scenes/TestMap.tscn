@@ -41,12 +41,13 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -71.6504 )
-jump_height = 85.0
+jump_height = 95.0
 jump_distance = 30.0
 air_drag = 0.05
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+zoom = Vector2( 0.15, 0.15 )
 smoothing_enabled = true
 
 [node name="Light2D" type="Light2D" parent="Player"]
