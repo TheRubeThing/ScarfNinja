@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dirt tilemap.png-be81c69440efc48fd25b3cc30b3d5b78.stex"
+path="res://.import/Dirt tilemap-2.png-0ad383375d17ef93ba1c39be2b3f331b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Dirt tilemap.png"
-dest_files=[ "res://.import/Dirt tilemap.png-be81c69440efc48fd25b3cc30b3d5b78.stex" ]
+source_file="res://Assets/Sprites/Dirt tilemap-2.png"
+dest_files=[ "res://.import/Dirt tilemap-2.png-0ad383375d17ef93ba1c39be2b3f331b.stex" ]
 
 [params]
 

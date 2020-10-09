@@ -103,5 +103,5 @@ func _physics_process(delta):
 		_landed = true
 
 func _calculate_jump_parameters():
-	_gravity = jump_height / (2 * pow((jump_distance / move_speed), 2))
+	_gravity = jump_height / (pow((jump_distance / move_speed), 2))
 	_jump_speed = sqrt(2 * jump_height * _gravity)
