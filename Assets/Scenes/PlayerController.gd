@@ -34,9 +34,11 @@ func _process(delta):
 	if _grounded:
 				
 		if _attacking:
+			$AnimatedSprite/Area2D/AttackShape.disabled = false
 			$AnimatedSprite.play("Attack")
 			_velocity.x = 0
 			if $AnimatedSprite.frame == 3:
+				$AnimatedSprite/Area2D/AttackShape.disabled = true
 				_attacking = false
 		elif _landed:
 			if abs(_velocity.x) > 20:
@@ -51,13 +53,13 @@ func _process(delta):
 				$AnimatedSprite.play("IdleRunTrans")
 			else:
 				$AnimatedSprite.play("Run")
-			$AnimatedSprite.flip_h = false
+			$AnimatedSprite.scale.x = 1
 		elif _velocity.x < -0.1:
 			if Input.is_action_just_pressed("Left_direction") || ($AnimatedSprite.animation == "IdleRunTrans" && $AnimatedSprite.frame != 1):
 				$AnimatedSprite.play("IdleRunTrans")
 			else:
 				$AnimatedSprite.play("Run")
-			$AnimatedSprite.flip_h = true
+			$AnimatedSprite.scale.x = -1
 		else:
 			if Input.is_action_just_released("Left_direction") || Input.is_action_just_released("Right_direction"):
 				$AnimatedSprite.play("IdleRunTrans")
@@ -65,17 +67,19 @@ func _process(delta):
 				$AnimatedSprite.play("Idle")
 	else:
 		if _attacking:
+			$AnimatedSprite/Area2D/AttackShape.disabled = false
 			$AnimatedSprite.play("Attack")
 			if $AnimatedSprite.frame == 3:
+				$AnimatedSprite/Area2D/AttackShape.disabled = true
 				_attacking = false
-		elif _velocity.y < -60:
+		elif _velocity.y < - 0.5 * _jump_speed:
 			$AnimatedSprite.play("Jump")
 		else:
 			$AnimatedSprite.play("Fall")
 			if _velocity.x > 0.1:
-				$AnimatedSprite.flip_h = false
+				$AnimatedSprite.scale.x = 1
 			else:
-				$AnimatedSprite.flip_h = true
+				$AnimatedSprite.scale.x = -1
 
 func _physics_process(delta):
 	_calculate_jump_parameters()

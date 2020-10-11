@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/Scenes/PlayerController.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Sprites/Ninja/Simple Ninja Idle Run transition.png" type="Texture" id=4]
@@ -100,6 +100,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 2.63689, 5.7016 )
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 3 )
 
@@ -109,6 +112,12 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 15 )
-animation = "Idle"
+animation = "Attack"
 speed_scale = 2.5
-playing = true
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite"]
+
+[node name="AttackShape" type="CollisionShape2D" parent="AnimatedSprite/Area2D"]
+position = Vector2( 5.59377, 0.546869 )
+shape = SubResource( 16 )
+disabled = true
