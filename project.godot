@@ -8,9 +8,50 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Reference",
+"class": "BaseState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/BaseState.gd"
+}, {
+"base": "BaseState",
+"class": "PlayerAttackState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/PlayerStates/PlayerAttackState.gd"
+}, {
+"base": "BaseState",
+"class": "PlayerFallState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/PlayerStates/PlayerFallState.gd"
+}, {
+"base": "BaseState",
+"class": "PlayerGroundedState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/PlayerStates/PlayerGroundedState.gd"
+}, {
+"base": "PlayerGroundedState",
+"class": "PlayerIdleState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/PlayerStates/PlayerIdleState.gd"
+}, {
+"base": "PlayerFallState",
+"class": "PlayerJumpState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/PlayerStates/PlayerJumpState.gd"
+}, {
+"base": "PlayerGroundedState",
+"class": "PlayerRunState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/PlayerStates/PlayerRunState.gd"
+} ]
 _global_script_class_icons={
-
+"BaseState": "",
+"PlayerAttackState": "",
+"PlayerFallState": "",
+"PlayerGroundedState": "",
+"PlayerIdleState": "",
+"PlayerJumpState": "",
+"PlayerRunState": ""
 }
 
 [application]
