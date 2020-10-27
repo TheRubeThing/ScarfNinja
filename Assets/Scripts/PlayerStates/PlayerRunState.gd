@@ -33,3 +33,4 @@ func enter(owner, previous_state):
 		owner.animated_sprite.scale.x = -1
 	owner.animated_sprite.play("IdleRunTrans")
 	_transitioning = true
+	.enter(owner, previous_state)

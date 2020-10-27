@@ -5,6 +5,7 @@ class_name PlayerFallState
 func enter(owner, previous_state):
 	_state_name = "Fall"
 	owner.animated_sprite.play("Fall")
+	.enter(owner, previous_state)
 	
 func process(owner, delta):
 	if Input.is_action_pressed("Right_direction"):

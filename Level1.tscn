@@ -189,8 +189,9 @@ jump_distance = 16.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 2.80003, 0.0703354 )
+offset = Vector2( 0, -8 )
 current = true
-zoom = Vector2( 0.15, 0.15 )
+zoom = Vector2( 0.1, 0.1 )
 smoothing_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]

@@ -7,6 +7,7 @@ func enter(owner, previous_state):
 	_state_name = "Jump"
 	owner.animated_sprite.play("Jump")
 	owner._velocity.y -= owner._jump_speed
+	.enter(owner, previous_state)
 	
 func process(owner, delta):
 	.process(owner, delta)
