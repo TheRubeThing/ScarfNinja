@@ -1,4 +1,7 @@
+# PlayerController.gd
 extends KinematicBody2D
+
+class_name PlayerController
 
 export(float) var move_speed = 100
 export(float) var jump_height = 200
@@ -14,18 +17,20 @@ var _attacking = false
 var _gravity = 0
 var _jump_speed = 0
 
-const STATES = {
-	"Idle": PlayerIdleState,
-	"Run": PlayerRunState,
-	"Jump": PlayerJumpState,
-	"Fall": PlayerFallState,
-	"Attack": PlayerAttackState
+onready var STATES = {
+	"Idle": PlayerIdleState.new(),
+	"Run": PlayerRunState.new(),
+	"Jump": PlayerJumpState.new(),
+	"Fall": PlayerFallState.new(),
+	"Attack": PlayerAttackState.new()
 }
 
-onready var state = STATES["Idle"].new()
+onready var state = STATES["Idle"]
 onready var previous_state = null
-onready var animated_sprite = $AnimatedSprite
-onready var attack_shape = $AnimatedSprite/Area2D/AttackShape
+onready var animated_sprite : AnimatedSprite = $AnimatedSprite
+onready var attack_shape : CollisionShape2D = $AnimatedSprite/Area2D/AttackShape
+onready var ground_particles : Node2D = $GroundParticles
+onready var dirt_particles = load("res://Assets/Scenes/GroundParticles/DirtParticles.tscn")
 
 func _ready():
 	state.enter(self, null)
@@ -42,7 +47,7 @@ func _physics_process(delta):
 func state_transition(new_state):
 	if new_state != null:
 		previous_state = state.exit(self, new_state)
-		state = STATES[new_state].new()
+		state = STATES[new_state]
 		state.enter(self, previous_state)
 
 func _calculate_jump_parameters():

@@ -9,12 +9,12 @@ func process(owner, delta):
 		return "Attack"
 	return null
 
-func physics_process(owner: KinematicBody2D, delta):
+func physics_process(owner, delta):
 	owner.move_and_slide(owner._velocity, Vector2.UP)
 
-func enter(owner: KinematicBody2D, previous_state):
+func enter(owner, previous_state):
 	_previous_state = previous_state
 
 	
-func exit(owner: KinematicBody2D, next_state):
+func exit(owner, next_state):
 	return _state_name

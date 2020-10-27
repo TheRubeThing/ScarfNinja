@@ -7,9 +7,15 @@ var _transitioning = false
 
 func process(owner, delta):	
 	if Input.is_action_pressed("Right_direction"):
+		if owner._velocity.x < 0:
+			_transitioning = true
+			owner.animated_sprite.play("IdleRunTrans")
 		owner._velocity.x = 1 * owner.move_speed
 		owner.animated_sprite.scale.x = 1
 	elif Input.is_action_pressed("Left_direction"):
+		if owner._velocity.x > 0:
+			_transitioning = true
+			owner.animated_sprite.play("IdleRunTrans")
 		owner._velocity.x = -1 * owner.move_speed
 		owner.animated_sprite.scale.x = -1
 	else:
@@ -17,7 +23,7 @@ func process(owner, delta):
 		owner._velocity.x -= owner._velocity.x * owner.grounded_drag
 
 	if _transitioning:
-		_transitioning = owner.animated_sprite.frames.get_frame_count("IdleRunTrans") - 1 == owner.animated_sprite.frame
+		_transitioning = not owner.animated_sprite.frames.get_frame_count("IdleRunTrans") - 1 == owner.animated_sprite.frame
 	else:
 		owner.animated_sprite.play("Run")
 	
@@ -26,6 +32,7 @@ func process(owner, delta):
 	return .process(owner, delta)
 	
 func enter(owner, previous_state):
+	.enter(owner, previous_state)
 	_state_name = "Run"
 	if Input.is_action_just_pressed("Right_direction"):
 		owner.animated_sprite.scale.x = 1
@@ -33,4 +40,3 @@ func enter(owner, previous_state):
 		owner.animated_sprite.scale.x = -1
 	owner.animated_sprite.play("IdleRunTrans")
 	_transitioning = true
-	.enter(owner, previous_state)

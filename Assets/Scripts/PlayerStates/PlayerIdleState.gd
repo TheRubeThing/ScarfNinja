@@ -4,9 +4,9 @@ extends PlayerGroundedState
 class_name PlayerIdleState
 
 func enter(owner, previous_state):
+	.enter(owner, previous_state)
 	_state_name = "Idle"
 	owner.animated_sprite.play("Idle")
-	.enter(owner, previous_state)
 	
 func process(owner, delta):
 	owner._velocity.x = 0

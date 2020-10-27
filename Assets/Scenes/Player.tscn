@@ -113,7 +113,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 15 )
 animation = "Attack"
-speed_scale = 2.5
+speed_scale = 2.0
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite"]
 
@@ -121,3 +121,6 @@ speed_scale = 2.5
 position = Vector2( 5.59377, 0.546869 )
 shape = SubResource( 16 )
 disabled = true
+
+[node name="GroundParticles" type="Node2D" parent="."]
+position = Vector2( 0, 8.02077 )

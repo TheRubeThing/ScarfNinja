@@ -3,9 +3,9 @@ extends BaseState
 class_name PlayerFallState
 
 func enter(owner, previous_state):
+	.enter(owner, previous_state)
 	_state_name = "Fall"
 	owner.animated_sprite.play("Fall")
-	.enter(owner, previous_state)
 	
 func process(owner, delta):
 	if Input.is_action_pressed("Right_direction"):
@@ -22,9 +22,9 @@ func process(owner, delta):
 	
 func physics_process(owner, delta):
 	owner._velocity.y += owner._gravity * delta
-	.physics_process(owner, delta)
+	var next_state = .physics_process(owner, delta)
 	if owner.test_move(owner.transform, Vector2(0, 0.1)):
 		if abs(owner._velocity.x) > 0:
 			return "Run"
 		return "Idle"
-	return null
+	return next_state
