@@ -4,6 +4,8 @@ extends KinematicBody2D
 class_name PlayerController
 
 export(float) var move_speed = 100
+export(float) var dash_speed = 200
+export(float) var dash_distance = 30
 export(float) var jump_height = 200
 export(float) var jump_distance = 200
 export(float) var air_drag = 0.1
@@ -22,7 +24,8 @@ onready var STATES = {
 	"Run": PlayerRunState.new(),
 	"Jump": PlayerJumpState.new(),
 	"Fall": PlayerFallState.new(),
-	"Attack": PlayerAttackState.new()
+	"Attack": PlayerAttackState.new(),
+	"Dash": PlayerDashState.new()
 }
 
 onready var state = STATES["Idle"]
