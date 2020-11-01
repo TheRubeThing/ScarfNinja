@@ -5,6 +5,7 @@ class_name PlayerController
 
 export(float) var move_speed = 100
 export(float) var dash_speed = 200
+export(float) var climb_speed = 40
 export(float) var dash_distance = 30
 export(float) var jump_height = 200
 export(float) var jump_distance = 200
@@ -25,13 +26,15 @@ onready var STATES = {
 	"Jump": PlayerJumpState.new(),
 	"Fall": PlayerFallState.new(),
 	"Attack": PlayerAttackState.new(),
-	"Dash": PlayerDashState.new()
+	"Dash": PlayerDashState.new(),
+	"Climb": PlayerClimbState.new()
 }
 
 onready var state = STATES["Idle"]
 onready var previous_state = null
 onready var animated_sprite : AnimatedSprite = $AnimatedSprite
 onready var attack_shape : CollisionShape2D = $AnimatedSprite/Area2D/AttackShape
+onready var climb_shape : Area2D = $ClimbDetect
 onready var ground_particles : Node2D = $GroundParticles
 onready var dirt_particles = load("res://Assets/Scenes/GroundParticles/DirtParticles.tscn")
 
@@ -56,3 +59,12 @@ func state_transition(new_state):
 func _calculate_jump_parameters():
 	_gravity = jump_height / (pow((jump_distance / move_speed), 2))
 	_jump_speed = sqrt(2 * jump_height * _gravity)
+	
+func detect_climb():
+	var climbables = get_tree().get_nodes_in_group("Climbable")
+	for climbable in climbables:
+		if climb_shape.overlaps_body(climbable):
+			return true
+	return false
+		
+	
