@@ -14,12 +14,27 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Assets/Scripts/BaseState.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "CrawlerController",
+"language": "GDScript",
+"path": "res://Assets/Scenes/CrawlerController.gd"
+}, {
 "base": "BaseState",
+"class": "PatrolState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/EnemyStates/PatrolState.gd"
+}, {
+"base": "PlayerBaseState",
 "class": "PlayerAttackState",
 "language": "GDScript",
 "path": "res://Assets/Scripts/PlayerStates/PlayerAttackState.gd"
 }, {
 "base": "BaseState",
+"class": "PlayerBaseState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/PlayerStates/PlayerBaseState.gd"
+}, {
+"base": "PlayerBaseState",
 "class": "PlayerClimbState",
 "language": "GDScript",
 "path": "res://Assets/Scripts/PlayerStates/PlayerClimbState.gd"
@@ -29,17 +44,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Assets/Scenes/PlayerController.gd"
 }, {
-"base": "BaseState",
+"base": "PlayerBaseState",
 "class": "PlayerDashState",
 "language": "GDScript",
 "path": "res://Assets/Scripts/PlayerStates/PlayerDashState.gd"
 }, {
-"base": "BaseState",
+"base": "PlayerBaseState",
 "class": "PlayerFallState",
 "language": "GDScript",
 "path": "res://Assets/Scripts/PlayerStates/PlayerFallState.gd"
 }, {
-"base": "BaseState",
+"base": "PlayerBaseState",
 "class": "PlayerGroundedState",
 "language": "GDScript",
 "path": "res://Assets/Scripts/PlayerStates/PlayerGroundedState.gd"
@@ -58,10 +73,18 @@ _global_script_classes=[ {
 "class": "PlayerRunState",
 "language": "GDScript",
 "path": "res://Assets/Scripts/PlayerStates/PlayerRunState.gd"
+}, {
+"base": "ParallaxLayer",
+"class": "ScaledParallaxLayer",
+"language": "GDScript",
+"path": "res://Assets/Scenes/Levels/ScaledParallaxLayer.gd"
 } ]
 _global_script_class_icons={
 "BaseState": "",
+"CrawlerController": "",
+"PatrolState": "",
 "PlayerAttackState": "",
+"PlayerBaseState": "",
 "PlayerClimbState": "",
 "PlayerController": "",
 "PlayerDashState": "",
@@ -69,7 +92,8 @@ _global_script_class_icons={
 "PlayerGroundedState": "",
 "PlayerIdleState": "",
 "PlayerJumpState": "",
-"PlayerRunState": ""
+"PlayerRunState": "",
+"ScaledParallaxLayer": ""
 }
 
 [application]
@@ -82,8 +106,9 @@ config/icon="res://icon.png"
 
 window/size/width=1920
 window/size/height=1080
-window/size/test_width=960
-window/size/test_height=540
+window/size/test_width=1920
+window/size/test_height=1080
+window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

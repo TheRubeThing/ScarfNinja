@@ -54,6 +54,7 @@ func state_transition(new_state):
 	if new_state != null:
 		previous_state = state.exit(self, new_state)
 		state = STATES[new_state]
+		print("Enter: ", new_state, " from ", previous_state)
 		state.enter(self, previous_state)
 
 func _calculate_jump_parameters():

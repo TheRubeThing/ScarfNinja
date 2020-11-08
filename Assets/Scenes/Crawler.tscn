@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Sprites/Crawler/Monster Attack.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/Crawler/Monster Walk.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/Crawler/Monster Idle.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Scenes/CrawlerController.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.94555, 6.8824 )
@@ -70,13 +71,14 @@ animations = [ {
 } ]
 
 [node name="Crawler" type="KinematicBody2D"]
+script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 13 )
-animation = "Idle"
-frame = 1
+animation = "Attack"
+frame = 4
 speed_scale = 2.0
 playing = true

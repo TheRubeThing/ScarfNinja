@@ -1,4 +1,4 @@
-extends BaseState
+extends PlayerBaseState
 
 class_name PlayerFallState
 
