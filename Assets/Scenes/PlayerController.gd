@@ -3,12 +3,12 @@ extends KinematicBody2D
 
 class_name PlayerController
 
-export(float) var move_speed = 100
+export(float) var move_speed = 75
 export(float) var dash_speed = 200
-export(float) var climb_speed = 40
-export(float) var dash_distance = 30
-export(float) var jump_height = 200
-export(float) var jump_distance = 200
+export(float) var climb_speed = 20
+export(float) var dash_distance = 42
+export(float) var jump_height = 38
+export(float) var jump_distance = 20
 export(float) var air_drag = 0.1
 export(float) var grounded_drag = 0.9
 

@@ -82,14 +82,14 @@ region = Rect2( 0, 48, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "Run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ) ],
@@ -135,7 +135,10 @@ extents = Vector2( 2.63689, 5.7016 )
 extents = Vector2( 2.02018, 1.29284 )
 
 [node name="Player" type="KinematicBody2D"]
+z_index = 1
 script = ExtResource( 3 )
+move_speed = 72.0
+climb_speed = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.25 )
