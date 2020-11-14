@@ -12,6 +12,9 @@ func enter(owner, previous_state):
 func process(owner, delta):
 	owner.animated_sprite.scale.x = direction
 	
+	if Input.is_action_just_pressed("Enemy_attack"):
+		return "Attack"
+	
 	if counter > counter_top:
 		counter = 0
 		counter_top = rand_range(0, 3)
@@ -27,7 +30,15 @@ func process(owner, delta):
 	return null
 	
 func physics_process(owner: KinematicBody2D, delta):
+	if owner.detect_player():
+		return "Attack"
 	if owner.test_move(owner.transform, Vector2(-direction, 0)):
 		direction *= -1
 		owner._velocity.x = owner.move_speed * -direction
+		
 	return .physics_process(owner, delta)
+	
+func message(message):
+	if message == "Damage":
+		return "Damage"
+	return null

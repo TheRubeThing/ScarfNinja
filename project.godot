@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "BaseState",
+"class": "AttackState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/EnemyStates/AttackState.gd"
+}, {
 "base": "Reference",
 "class": "BaseState",
 "language": "GDScript",
@@ -18,6 +23,16 @@ _global_script_classes=[ {
 "class": "CrawlerController",
 "language": "GDScript",
 "path": "res://Assets/Scenes/CrawlerController.gd"
+}, {
+"base": "BaseState",
+"class": "DamageState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/EnemyStates/DamageState.gd"
+}, {
+"base": "BaseState",
+"class": "DieState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/EnemyStates/DieState.gd"
 }, {
 "base": "BaseState",
 "class": "PatrolState",
@@ -50,6 +65,11 @@ _global_script_classes=[ {
 "path": "res://Assets/Scripts/PlayerStates/PlayerDashState.gd"
 }, {
 "base": "PlayerBaseState",
+"class": "PlayerDieState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/PlayerStates/PlayerDieState.gd"
+}, {
+"base": "PlayerBaseState",
 "class": "PlayerFallState",
 "language": "GDScript",
 "path": "res://Assets/Scripts/PlayerStates/PlayerFallState.gd"
@@ -80,14 +100,18 @@ _global_script_classes=[ {
 "path": "res://Assets/Scenes/Levels/ScaledParallaxLayer.gd"
 } ]
 _global_script_class_icons={
+"AttackState": "",
 "BaseState": "",
 "CrawlerController": "",
+"DamageState": "",
+"DieState": "",
 "PatrolState": "",
 "PlayerAttackState": "",
 "PlayerBaseState": "",
 "PlayerClimbState": "",
 "PlayerController": "",
 "PlayerDashState": "",
+"PlayerDieState": "",
 "PlayerFallState": "",
 "PlayerGroundedState": "",
 "PlayerIdleState": "",
@@ -99,7 +123,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ScarfNinja"
-run/main_scene="res://Assets/Scenes/Levels/Level1.tscn"
+run/main_scene="res://Assets/Scenes/Levels/TestLevel.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -159,6 +183,11 @@ Down_direction={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Enemy_attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":66,"unicode":0,"echo":false,"script":null)
  ]
 }
 

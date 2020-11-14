@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Icon.png-33e63688031d53466d4d656c73cf10ca.stex"
+path="res://.import/Simple Ninja Damage.png-581415b0a5c6f0c2a6d155c112343404.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Icon.png"
-dest_files=[ "res://.import/Icon.png-33e63688031d53466d4d656c73cf10ca.stex" ]
+source_file="res://Assets/Sprites/Ninja/Simple Ninja Damage.png"
+dest_files=[ "res://.import/Simple Ninja Damage.png-581415b0a5c6f0c2a6d155c112343404.stex" ]
 
 [params]
 

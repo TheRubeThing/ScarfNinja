@@ -7,6 +7,11 @@ func process(owner, delta):
 		return "Attack"
 	if Input.is_action_just_pressed("Dash") && not _state_name == "Dash":
 		return "Dash"
-	if Input.is_action_just_pressed("Climb"):
+	if Input.is_action_just_pressed("Climb") && owner.detect_climb():
 		return "Climb"
+	return null
+
+func message(message):
+	if message == "Damage":
+		return "Damage"
 	return null

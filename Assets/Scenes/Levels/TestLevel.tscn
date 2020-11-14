@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Tilemaps/Dirt.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Tilemaps/Vines.tres" type="TileSet" id=3]
 [ext_resource path="res://Assets/Scenes/Levels/ScaledParallaxLayer.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Scenes/Crawler.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Icon.png" type="Texture" id=6]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.652344, 0.575768, 0.226183, 1, 0.156256, 0.0529119, 0.582031, 1 )
@@ -13,6 +14,28 @@ colors = PoolColorArray( 0.652344, 0.575768, 0.226183, 1, 0.156256, 0.0529119, 0
 gradient = SubResource( 1 )
 
 [node name="Node2D" type="Node2D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer"]
+margin_right = 6.0
+margin_bottom = 6.0
+texture = ExtResource( 6 )
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/GridContainer"]
+margin_top = 10.0
+margin_right = 6.0
+margin_bottom = 16.0
+texture = ExtResource( 6 )
 
 [node name="Crawler" parent="." instance=ExtResource( 5 )]
 position = Vector2( -224, 0 )
@@ -199,7 +222,7 @@ tile_data = PoolIntArray( -1048562, 0, 0, -1048561, 0, 1, -1048560, 0, 1, -10485
 motion_scale = Vector2( 0.5, 0.5 )
 
 [node name="Art" type="Sprite" parent="ParallaxBackground/Sky"]
-position = Vector2( 1384, -93.1559 )
+position = Vector2( 1360, -104 )
 rotation = -1.5708
 scale = Vector2( 0.422762, 2749.54 )
 z_index = -5

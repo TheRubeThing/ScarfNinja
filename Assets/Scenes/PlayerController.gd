@@ -11,6 +11,7 @@ export(float) var jump_height = 38
 export(float) var jump_distance = 20
 export(float) var air_drag = 0.1
 export(float) var grounded_drag = 0.9
+export(float) var health = 30
 
 var _grounded = false
 var _landed = false
@@ -27,7 +28,9 @@ onready var STATES = {
 	"Fall": PlayerFallState.new(),
 	"Attack": PlayerAttackState.new(),
 	"Dash": PlayerDashState.new(),
-	"Climb": PlayerClimbState.new()
+	"Climb": PlayerClimbState.new(),
+	"Damage": DamageState.new(),
+	"Die": PlayerDieState.new()
 }
 
 onready var state = STATES["Idle"]
@@ -68,4 +71,17 @@ func detect_climb():
 			return true
 	return false
 		
-	
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("Enemies"):
+		body.take_damage(10)
+		
+func take_damage(damage_amount : int):
+	health -= damage_amount
+	var new_state = state.message("Damage")
+	state_transition(new_state)
+	if health <= 0:
+		new_state = state.message("Die")
+		state_transition(new_state)
+
+func disable_collision():
+	$CollisionShape2D.disabled = true
