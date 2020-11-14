@@ -11,7 +11,9 @@ export(float) var jump_height = 38
 export(float) var jump_distance = 20
 export(float) var air_drag = 0.1
 export(float) var grounded_drag = 0.9
-export(float) var health = 30
+export(float) var Max_health = 10
+
+onready var health = Max_health
 
 var _grounded = false
 var _landed = false

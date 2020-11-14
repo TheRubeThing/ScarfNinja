@@ -56,7 +56,7 @@ func take_damage(damage_amount: int):
 func _on_AttackArea_body_entered(body):
 	print("Attack shape collided")
 	if body.is_in_group("Player"):
-		body.take_damage(10)
+		body.take_damage(1)
 
 func detect_player() -> bool:
 	var bodies = detect_area.get_overlapping_bodies()

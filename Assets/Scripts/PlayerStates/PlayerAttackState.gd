@@ -23,5 +23,7 @@ func process(owner, delta):
 		if _previous_state == "Jump":
 			owner._velocity.y = 0
 			return "Fall"
+		if _previous_state == "Damage":
+			return "Idle"
 		return _previous_state
 	return .process(owner, delta)
