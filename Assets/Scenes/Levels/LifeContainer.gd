@@ -8,6 +8,8 @@ onready var player : PlayerController = get_node("/root/Node2D/Player")
 func _ready():
 	for idx in range(player.Max_health):
 		var sprite = healthSprite.instance()
+		sprite.margin_bottom = 10
+		sprite.margin_right = 10
 		add_child(sprite)
 
 func _process(delta):

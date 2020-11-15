@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "CrawlerController",
 "language": "GDScript",
-"path": "res://Assets/Scenes/CrawlerController.gd"
+"path": "res://Assets/Scripts/CrawlerController.gd"
 }, {
 "base": "BaseState",
 "class": "DamageState",
@@ -57,7 +57,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "PlayerController",
 "language": "GDScript",
-"path": "res://Assets/Scenes/PlayerController.gd"
+"path": "res://Assets/Scripts/PlayerController.gd"
 }, {
 "base": "PlayerBaseState",
 "class": "PlayerDashState",
@@ -98,6 +98,16 @@ _global_script_classes=[ {
 "class": "ScaledParallaxLayer",
 "language": "GDScript",
 "path": "res://Assets/Scenes/Levels/ScaledParallaxLayer.gd"
+}, {
+"base": "BaseState",
+"class": "WizardAttackState",
+"language": "GDScript",
+"path": "res://Assets/Scripts/EnemyStates/WizardAttackState.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "WizardController",
+"language": "GDScript",
+"path": "res://Assets/Scripts/WizardController.gd"
 } ]
 _global_script_class_icons={
 "AttackState": "",
@@ -117,7 +127,9 @@ _global_script_class_icons={
 "PlayerIdleState": "",
 "PlayerJumpState": "",
 "PlayerRunState": "",
-"ScaledParallaxLayer": ""
+"ScaledParallaxLayer": "",
+"WizardAttackState": "",
+"WizardController": ""
 }
 
 [application]
