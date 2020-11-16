@@ -1,56 +1,36 @@
-extends KinematicBody2D
+extends BaseController
 class_name WizardController
 
-export(float) var move_speed = 25
 export(float) var dash_speed = 200
-export(float) var health = 50
 
 var _grounded = false
 var _landed = false
-var _velocity = Vector2()
 var _attacking = false
 
 var _gravity = 0
 var _jump_speed = 0
-
-
-onready var STATES = {
-	"Patrol": PatrolState.new(),
-	"Attack": WizardAttackState.new(),
-	"Damage": DamageState.new(),
-	"Die": DieState.new()
-}
-
-onready var state = STATES["Patrol"]
-onready var previous_state = null
-onready var animated_sprite : AnimatedSprite = $AnimatedSprite
+ 
 onready var attack_shape : CollisionShape2D = $AnimatedSprite/AttackArea/AttackShape
 onready var detect_area : Area2D = $AnimatedSprite/PlayerDetectArea
 
 func _ready():
+	STATES = {
+		"Patrol": PatrolState.new(),
+		"Attack": AttackState.new([11],[12],0),
+		"Damage": DamageState.new(),
+		"Die": DieState.new()
+	}
+	state = STATES["Patrol"]
+	previous_state = null
 	state.enter(self, null)
-
-func _process(delta):
-	var new_state = state.process(self, delta)
-	state_transition(new_state)
-
-func _physics_process(delta):			
-	var new_state = state.physics_process(self, delta)
-	state_transition(new_state)
-
-func state_transition(new_state):
-	if new_state != null:
-		previous_state = state.exit(self, new_state)
-		state = STATES[new_state]
-		print("Enter: ", new_state, " from ", previous_state)
-		state.enter(self, previous_state)
+	controller_name = "Wizard"
 		
 func take_damage(damage_amount: int):
 	health -= damage_amount
-	var new_state = state.message("Damage")
+	var new_state = state.message("Damage", null)
 	state_transition(new_state)
 	if health <= 0:
-		new_state = state.message("Die")
+		new_state = state.message("Die", null)
 		state_transition(new_state)
 
 func _on_AttackArea_body_entered(body):
@@ -67,4 +47,14 @@ func detect_player() -> bool:
 	
 func disable_collision():
 	$CollisionShape2D.disabled = true
+	attack_shape.disabled = true
+
+func _on_AnimatedSprite_animation_finished():
+	var new_state = state.message("AnimationFinished", null)
+	state_transition(new_state)
+
+func start_attack(index = 0):
+	attack_shape.disabled = false
+	
+func end_attack(index = 0):
 	attack_shape.disabled = true

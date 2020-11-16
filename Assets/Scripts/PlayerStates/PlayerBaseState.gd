@@ -11,7 +11,7 @@ func process(owner, delta):
 		return "Climb"
 	return null
 
-func message(message):
+func message(message, data):
 	if message == "Damage":
 		return "Damage"
 	return null

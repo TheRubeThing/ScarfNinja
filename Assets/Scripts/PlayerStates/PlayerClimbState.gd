@@ -3,19 +3,22 @@ extends PlayerBaseState
 class_name PlayerClimbState
 
 func process(owner, delta):
-	owner.animated_sprite.play("Climb")
-	owner._velocity = Vector2.ZERO
+	owner.play_animation("Climb")
+	var direction = Vector2.ZERO
 	if Input.is_action_pressed("Up_direction"):
-		owner._velocity.y = -owner.climb_speed
+		direction.y += -1
 	if Input.is_action_pressed("Down_direction"):
-		owner._velocity.y = owner.climb_speed
+		direction.y += 1
 	if Input.is_action_pressed("Left_direction"):
-		owner._velocity.x = -owner.climb_speed
+		direction.x += -1
 	if Input.is_action_pressed("Right_direction"):
-		owner._velocity.x = owner.climb_speed
+		direction.x += 1
+		
+	direction = direction.normalized()
+	owner._velocity = direction * owner.climb_speed
 	
 	if owner._velocity == Vector2.ZERO:
-		owner.animated_sprite.stop()
+		owner.stop_animation()
 		
 	if Input.is_action_just_pressed("Jump") || not owner.detect_climb():
 		return "Fall"

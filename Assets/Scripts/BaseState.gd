@@ -17,5 +17,5 @@ func enter(owner, previous_state):
 func exit(owner, next_state):
 	return _state_name
 	
-func message(message):
+func message(message, data):
 	return null

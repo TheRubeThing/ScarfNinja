@@ -2,19 +2,23 @@ extends BaseState
 class_name DamageState
 
 var _dead = false
-func enter(owner, previous_state):
+var _temp_velocity := Vector2.ZERO
+func enter(owner: BaseController, previous_state):
 	_state_name = "Damage"
 	_previous_state = previous_state
-	owner.animated_sprite.play("Damage")
+	owner.play_animation("Damage")
+	_temp_velocity = owner._velocity
 	owner._velocity = Vector2.ZERO
 
-func process(owner, delta):
-	if owner.animated_sprite.frame == owner.animated_sprite.frames.get_frame_count("Damage") - 1:
+func exit(owner: BaseController, new_state):
+	owner._velocity = _temp_velocity
+	return .exit(owner, new_state)
+	
+func message(message, data):
+	if message == "AnimationFinished":
 		if _dead:
 			return "Die"
 		return _previous_state
-	return null
-	
-func message(message):
 	if message == "Die":
 		_dead = true
+	return null

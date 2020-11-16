@@ -5,8 +5,9 @@ var delete_timer = 5
 
 func enter(owner, previous_state):
 	_state_name = "Die"
+	owner._velocity.x = 0
 	owner.disable_collision()
-	owner.animated_sprite.play("Die")
+	owner.play_animation("Die")
 	
 func process(owner, delta):
 	delete_timer -= delta
