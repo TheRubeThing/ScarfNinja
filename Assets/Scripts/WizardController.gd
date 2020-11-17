@@ -5,10 +5,12 @@ export(float) var dash_speed = 200
 
 var _grounded = false
 var _landed = false
-var _attacking = false
+var _can_attack = true
 
 var _gravity = 0
 var _jump_speed = 0
+
+var _projectile := preload("res://Assets/Scenes/Projectile.tscn")
  
 onready var attack_shape : CollisionShape2D = $AnimatedSprite/AttackArea/AttackShape
 onready var detect_area : Area2D = $AnimatedSprite/PlayerDetectArea
@@ -33,11 +35,6 @@ func take_damage(damage_amount: int):
 		new_state = state.message("Die", null)
 		state_transition(new_state)
 
-func _on_AttackArea_body_entered(body):
-	print("Attack shape collided")
-	if body.is_in_group("Player"):
-		body.take_damage(1)
-
 func detect_player() -> bool:
 	var bodies = detect_area.get_overlapping_bodies()
 	for body in bodies:
@@ -47,14 +44,20 @@ func detect_player() -> bool:
 	
 func disable_collision():
 	$CollisionShape2D.disabled = true
-	attack_shape.disabled = true
 
 func _on_AnimatedSprite_animation_finished():
 	var new_state = state.message("AnimationFinished", null)
 	state_transition(new_state)
 
 func start_attack(index = 0):
-	attack_shape.disabled = false
-	
+	if _can_attack: 
+		var projectile = _projectile.instance()
+		print("Instanced projectile")
+		projectile.position = to_global($AnimatedSprite/SpellSpawn.position)
+		projectile.set_start_direction(Vector2($AnimatedSprite.scale.x, 0))
+		get_parent().add_child(projectile)
+		_can_attack = false
+		
 func end_attack(index = 0):
-	attack_shape.disabled = true
+	_can_attack = true
+

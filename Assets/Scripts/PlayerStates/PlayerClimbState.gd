@@ -2,6 +2,10 @@ extends PlayerBaseState
 
 class_name PlayerClimbState
 
+func enter(owner, previous_state):
+	_state_name = "Climb"
+	.enter(owner, previous_state)
+
 func process(owner, delta):
 	owner.play_animation("Climb")
 	var direction = Vector2.ZERO
