@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Tilemaps/Dirt.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/Enteties/Player.tscn" type="PackedScene" id=2]
@@ -8,8 +8,7 @@
 [ext_resource path="res://Assets/Scenes/Levels/LifeContainer.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Scenes/Levels/SmartCamera2D.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Sprites/Frog/Frog.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/Collectibles/water_spirit.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Scenes/Levels/Water spirit.gd" type="Script" id=10]
+[ext_resource path="res://Water spirit.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Scenes/Enteties/Wizard.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Gradient" id=1]
@@ -232,10 +231,7 @@ modulate = Color( 0.77, 0.764867, 0.7546, 1 )
 position = Vector2( 128, -136 )
 texture = ExtResource( 8 )
 
-[node name="Water spirit" type="Sprite" parent="."]
-position = Vector2( 32, -7.52605 )
-texture = ExtResource( 9 )
-script = ExtResource( 10 )
+[node name="Water spirit" parent="." instance=ExtResource( 9 )]
 
 [node name="Wizard" parent="." instance=ExtResource( 11 )]
 position = Vector2( -8, -8 )

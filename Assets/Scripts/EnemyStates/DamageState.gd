@@ -18,6 +18,8 @@ func message(message, data):
 	if message == "AnimationFinished":
 		if _dead:
 			return "Die"
+		if _previous_state == "Climb":
+			return "Fall"
 		return _previous_state
 	if message == "Die":
 		_dead = true

@@ -171,13 +171,14 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=36]
-extents = Vector2( 51.5062, 26.6301 )
+extents = Vector2( 33.0112, 37.5788 )
 
 [node name="Wizard" type="KinematicBody2D" groups=[
 "Enemies",
 ]]
 script = ExtResource( 4 )
 move_speed = 10.0
+Max_health = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.561188, 0.553305 )
@@ -193,7 +194,7 @@ playing = true
 [node name="PlayerDetectArea" type="Area2D" parent="AnimatedSprite"]
 
 [node name="DetectShape" type="CollisionShape2D" parent="AnimatedSprite/PlayerDetectArea"]
-position = Vector2( 55.5818, -1.61952 )
+position = Vector2( 0, 0.553305 )
 shape = SubResource( 36 )
 
 [node name="SpellSpawn" type="Position2D" parent="AnimatedSprite"]

@@ -5,8 +5,8 @@ var _grounded = false
 var _landed = false
 var _attacking = false
 
-var _gravity = 0
-var _jump_speed = 0
+var _gravity = 0.0
+var _jump_speed = 0.0
 
 onready var attack_shape : CollisionShape2D = $AnimatedSprite/AttackArea/AttackShape
 onready var detect_area : Area2D = $AnimatedSprite/PlayerDetectArea

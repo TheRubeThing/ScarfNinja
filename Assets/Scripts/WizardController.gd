@@ -1,7 +1,7 @@
 extends BaseController
 class_name WizardController
 
-export(float) var dash_speed = 200
+export(float) var dash_speed = 200.0
 
 var _grounded = false
 var _landed = false
@@ -12,7 +12,6 @@ var _jump_speed = 0
 
 var _projectile := preload("res://Assets/Scenes/Projectile.tscn")
  
-onready var attack_shape : CollisionShape2D = $AnimatedSprite/AttackArea/AttackShape
 onready var detect_area : Area2D = $AnimatedSprite/PlayerDetectArea
 
 func _ready():

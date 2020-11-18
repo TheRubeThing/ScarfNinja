@@ -195,7 +195,7 @@ animations = [ {
 "name": "Jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": false,
 "name": "IdleRunTrans",
 "speed": 5.0
@@ -220,11 +220,12 @@ animations = [ {
 extents = Vector2( 3.54834, 6.64952 )
 
 [sub_resource type="RectangleShape2D" id=40]
-extents = Vector2( 2.02018, 1.29284 )
+extents = Vector2( 2.02018, 3.36489 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
+position = Vector2( -8, 0 )
 z_index = 1
 script = ExtResource( 3 )
 Max_health = 10.0

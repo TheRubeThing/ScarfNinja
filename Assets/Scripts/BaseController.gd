@@ -1,8 +1,8 @@
 extends KinematicBody2D
 class_name BaseController
 
-export(float) var move_speed = 40
-export(float) var Max_health = 50
+export(float) var move_speed = 40.0
+export(float) var Max_health = 50.0
 
 var _velocity = Vector2()
 var _previous_velocity = Vector2()

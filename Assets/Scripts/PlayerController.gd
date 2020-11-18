@@ -3,11 +3,11 @@ extends BaseController
 
 class_name PlayerController
 
-export(float) var dash_speed = 80
-export(float) var climb_speed = 10
-export(float) var dash_distance = 20
-export(float) var jump_height = 38
-export(float) var jump_distance = 20
+export(float) var dash_speed = 80.0
+export(float) var climb_speed = 10.0
+export(float) var dash_distance = 200.0
+export(float) var jump_height = 38.0
+export(float) var jump_distance = 20.0
 export(float) var air_drag = 0.1
 export(float) var grounded_drag = 0.9
 
@@ -15,8 +15,8 @@ var _grounded = false
 var _landed = false
 var _attacking = false
 
-var _gravity = 0
-var _jump_speed = 0
+var _gravity = 0.0
+var _jump_speed = 0.0
 
 onready var attack_shape : CollisionShape2D = $AnimatedSprite/Area2D/AttackShape
 onready var climb_shape : Area2D = $ClimbDetect
@@ -44,7 +44,7 @@ func _physics_process(delta):
 	._physics_process(delta)
 
 func _calculate_jump_parameters():
-	_gravity = jump_height / (pow((jump_distance / move_speed), 2))
+	_gravity = jump_height / pow((jump_distance / move_speed), 2)
 	_jump_speed = sqrt(2 * jump_height * _gravity)
 	
 func detect_climb():

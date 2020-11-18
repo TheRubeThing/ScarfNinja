@@ -26,7 +26,7 @@ func enter(owner: BaseController, previous_state):
 func process(owner, delta):
 	_timer += delta
 	if _timer > _dash_time || Input.is_action_just_released("Dash"):
-		if _previous_state == "Attack":
+		if _previous_state == "Attack" || _previous_state == "Damage":
 			return "Idle"
 		return _previous_state
 	return null
